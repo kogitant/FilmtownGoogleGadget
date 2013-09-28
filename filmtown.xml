@@ -1,0 +1,1113 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+	<ModulePrefs 
+		title="Filmtown: tulossa vuokralle" 
+      	directory_title="Filmtown: tulossa vuokralle"
+		title_url="http://www.koant.com/googlegadgets/filmtown/filmtown.html" 
+		description="Parses the Filmtown.fi upcoming movies site and optionally shows the RottentTomatoes.com rating and poster"
+		author="agookoi"
+		author_email="googlegadgets@koant.com" 
+		author_affiliation="personal"
+		author_location="Finland"
+		screenshot="http://www.koant.com/googlegadgets/filmtown/filmtown.png"
+		thumbnail="http://www.koant.com/googlegadgets/filmtown/filmtown_thmb.png"
+	    render_inline="never"
+	    scaling="true"
+	    height="200"
+	    scrolling="true"
+	    singleton="false"
+	>
+	<Require feature="analytics"/>	
+	</ModulePrefs>
+    <UserPref 
+    		name="bShowFilmTitle" 
+    		display_name="Title?" 
+    		datatype="bool" 
+    		default_value="true"
+    	/>
+    <UserPref 
+    		name="bShowOriginalFilmTitle" 
+    		display_name="Original?" 
+    		datatype="bool" 
+    		default_value="true"
+    	/>
+    <UserPref 
+    		name="bShowPoster" 
+    		display_name="Poster?" 
+    		datatype="bool" 
+    		default_value="true"
+    	/>
+    <UserPref 
+    		name="bShowReleaseWeek" 
+    		display_name="Week?" 
+    		datatype="bool" 
+    		default_value="true"
+    	/>
+    <UserPref 
+    		name="bShowReleaseDate" 
+    		display_name="Date?" 
+    		datatype="bool" 
+    		default_value="true"
+    	/>
+    <UserPref 
+    		name="bShowRating" 
+    		display_name="Rating?" 
+    		datatype="bool" 
+    		default_value="true"
+    	/>
+	<UserPref name="iTitleFontSize" 
+	       display_name="Title size"
+	       datatype="enum"
+	       default_value="0.8">
+	    <EnumValue value="0.4" display_value="0.4em"/>
+	    <EnumValue value="0.45" display_value="0.45em"/>
+	    <EnumValue value="0.5" display_value="0.5em"/>
+	    <EnumValue value="0.55" display_value="0.55em"/>
+	    <EnumValue value="0.6" display_value="0.6em"/>
+	    <EnumValue value="0.65" display_value="0.65em"/>
+	    <EnumValue value="0.7" display_value="0.7em"/>
+	    <EnumValue value="0.75" display_value="0.75em"/>
+	    <EnumValue value="0.8" display_value="0.8em"/>
+	    <EnumValue value="0.85" display_value="0.85em"/>
+	    <EnumValue value="0.9" display_value="0.9em"/>
+	    <EnumValue value="0.95" display_value="0.95em"/>
+	    <EnumValue value="1" display_value="1.0em"/>
+	</UserPref>    	
+	<UserPref name="iReleaseWeekFontSize" 
+	       display_name="Week size"
+	       datatype="enum"
+	       default_value="0.8">
+	    <EnumValue value="0.4" display_value="0.4em"/>
+	    <EnumValue value="0.45" display_value="0.45em"/>
+	    <EnumValue value="0.5" display_value="0.5em"/>
+	    <EnumValue value="0.55" display_value="0.55em"/>
+	    <EnumValue value="0.6" display_value="0.6em"/>
+	    <EnumValue value="0.65" display_value="0.65em"/>
+	    <EnumValue value="0.7" display_value="0.7em"/>
+	    <EnumValue value="0.75" display_value="0.75em"/>
+	    <EnumValue value="0.8" display_value="0.8em"/>
+	    <EnumValue value="0.85" display_value="0.85em"/>
+	    <EnumValue value="0.9" display_value="0.9em"/>
+	    <EnumValue value="0.95" display_value="0.95em"/>
+	    <EnumValue value="1" display_value="1.0em"/>
+	</UserPref>    	
+	<UserPref name="iReleaseDateFontSize" 
+	       display_name="Date size"
+	       datatype="enum"
+	       default_value="0.8">
+	    <EnumValue value="0.4" display_value="0.4em"/>
+	    <EnumValue value="0.45" display_value="0.45em"/>
+	    <EnumValue value="0.5" display_value="0.5em"/>
+	    <EnumValue value="0.55" display_value="0.55em"/>
+	    <EnumValue value="0.6" display_value="0.6em"/>
+	    <EnumValue value="0.65" display_value="0.65em"/>
+	    <EnumValue value="0.7" display_value="0.7em"/>
+	    <EnumValue value="0.75" display_value="0.75em"/>
+	    <EnumValue value="0.8" display_value="0.8em"/>
+	    <EnumValue value="0.85" display_value="0.85em"/>
+	    <EnumValue value="0.9" display_value="0.9em"/>
+	    <EnumValue value="0.95" display_value="0.95em"/>
+	    <EnumValue value="1" display_value="1.0em"/>
+	</UserPref>    	
+	<UserPref name="iRatingFontSize" 
+	       display_name="Rating size"
+	       datatype="enum"
+	       default_value="0.8">
+	    <EnumValue value="0.4" display_value="0.4em"/>
+	    <EnumValue value="0.45" display_value="0.45em"/>
+	    <EnumValue value="0.5" display_value="0.5em"/>
+	    <EnumValue value="0.55" display_value="0.55em"/>
+	    <EnumValue value="0.6" display_value="0.6em"/>
+	    <EnumValue value="0.65" display_value="0.65em"/>
+	    <EnumValue value="0.7" display_value="0.7em"/>
+	    <EnumValue value="0.75" display_value="0.75em"/>
+	    <EnumValue value="0.8" display_value="0.8em"/>
+	    <EnumValue value="0.85" display_value="0.85em"/>
+	    <EnumValue value="0.9" display_value="0.9em"/>
+	    <EnumValue value="0.95" display_value="0.95em"/>
+	    <EnumValue value="1" display_value="1.0em"/>
+	</UserPref>    	
+	<UserPref name="iRottenRatingMatchLimit" 
+	       display_name="Match threshold"
+	       datatype="enum"
+	       default_value="80">
+	    <EnumValue value="0" display_value="0%"/>
+	    <EnumValue value="10" display_value="10%"/>
+	    <EnumValue value="20" display_value="20%"/>
+	    <EnumValue value="30" display_value="30%"/>
+	    <EnumValue value="40" display_value="40%"/>
+	    <EnumValue value="50" display_value="50%"/>
+	    <EnumValue value="60" display_value="60%"/>
+	    <EnumValue value="70" display_value="70%"/>
+	    <EnumValue value="80" display_value="80%"/>
+	    <EnumValue value="90" display_value="90%"/>
+	    <EnumValue value="100" display_value="100%"/>
+	</UserPref>    	
+    <Content type="html">
+		<![CDATA[ 
+		<link 
+			rel="stylesheet" 
+			type="text/css" 
+			href="http://www.koant.com/googlegadgets/filmtown/filmtown.css"
+		>
+		<div class="content" id="content__MODULE_ID__">
+		</div>
+        	<script type="text/javascript">
+        		var DEBUG=0;
+        		var DEBUG_WINDOW = null;
+        		var DEBUG_OUTPUT = null;
+        		// Initialize global variables that need to be accessible 
+        		// to all functions
+			var prefs__MODULE_ID__ = null; 
+            	var bShowRating__MODULE_ID__ = null;
+            	var bShowPoster__MODULE_ID__ = null;
+            	var bShowFilmTitle__MODULE_ID__ = null; 
+            	var bShowOriginalFilmTitle__MODULE_ID__ = null;
+            	var bShowReleaseDate__MODULE_ID__ = null;
+            	var bShowReleaseWeek__MODULE_ID__ = null;
+            	var iTitleFontSize__MODULE_ID__ = null;        	            	
+            	var iReleaseWeekFontSize__MODULE_ID__ = null;
+            	var iReleaseDateFontSize__MODULE_ID__ = null;
+            	var iRatingFontSize__MODULE_ID__ = null;
+            	var iRottenRatingMatchLimit__MODULE_ID__ = null;
+            	
+            	
+            	var arrFilm__MODULE_ID__ = new Array(); // This array has data of single film, temporary
+            	var arrFilms__MODULE_ID__ = new Array(); // This array has arrays of the above kind
+
+			// This is the base url of all images etc.
+            	var baseUrl = "http://www.koant.com/googlegadgets/filmtown";
+			
+			//The html site url
+            	var sUrl = "http://www.filmtown.fi/index.php?page=moviecoming";
+            	var sFilmtownBaseUrl = "http://www.filmtown.fi/";
+			
+        		//This is the wrapper function to handle all processing
+            	function filmtown__MODULE_ID__(){
+            		//Get a handle to the user preferences
+				prefs__MODULE_ID__ = new _IG_Prefs(__MODULE_ID__);
+				
+                	// Get the preferences
+                	// Should stars of album be shown
+                	bShowRating__MODULE_ID__ = prefs__MODULE_ID__.getBool("bShowRating");
+                	// Should poster of film be shown
+                	bShowPoster__MODULE_ID__ = prefs__MODULE_ID__.getBool("bShowPoster");
+                	// Should the film title be shown
+                	bShowFilmTitle__MODULE_ID__ = prefs__MODULE_ID__.getBool("bShowFilmTitle");
+                	// Should the original film title be shown:
+                	bShowOriginalFilmTitle__MODULE_ID__ = prefs__MODULE_ID__.getBool("bShowOriginalFilmTitle");
+                	// Should the  release week be shown
+	            	bShowReleaseWeek__MODULE_ID__ = prefs__MODULE_ID__.getBool("bShowReleaseWeek");                	
+                	// Should the spesific release date be shown
+	            	bShowReleaseDate__MODULE_ID__ = prefs__MODULE_ID__.getBool("bShowReleaseDate");                	
+	            	
+                	//Get the font-sizes selected by user:
+                	iTitleFontSize__MODULE_ID__ =  prefs__MODULE_ID__.getString("iTitleFontSize");
+                	iReleaseWeekFontSize__MODULE_ID__ =  prefs__MODULE_ID__.getString("iReleaseWeekFontSize");
+                	iReleaseDateFontSize__MODULE_ID__ =  prefs__MODULE_ID__.getString("iReleaseDateFontSize");
+                	iRatingFontSize__MODULE_ID__ =  prefs__MODULE_ID__.getString("iRatingFontSize");
+                	
+                	// Get the match percentage threshold for rotten tomatoes matching
+                	iRottenRatingMatchLimit__MODULE_ID__ = prefs__MODULE_ID__.getString("iRottenRatingMatchLimit");
+                	
+                	// Track the preference usage with Analytics:
+                	trackPreferenceUsageWithAnalytics(bShowRating__MODULE_ID__, 
+                									bShowPoster__MODULE_ID__,
+                									bShowFilmTitle__MODULE_ID__,
+                									bShowOriginalFilmTitle__MODULE_ID__,
+                									bShowReleaseWeek__MODULE_ID__,
+                									bShowReleaseDate__MODULE_ID__,
+                									iTitleFontSize__MODULE_ID__,
+                									iReleaseWeekFontSize__MODULE_ID__,
+                									iReleaseDateFontSize__MODULE_ID__,
+                									iRatingFontSize__MODULE_ID__,
+                									iRottenRatingMatchLimit__MODULE_ID__
+                									);
+
+				// Start the actual processing
+		    		// Extract and parse times from the xml file. 
+             	_IG_FetchContent(sUrl, function (response){
+             		processPhase1__MODULE_ID__(response);
+             	});    				
+            	} // function rollingstone__MODULE_ID__()
+            	
+         	function processPhase1__MODULE_ID__(response) {
+                  if (response == "") {
+                  	_gel("content__MODULE_ID__").innerHTML = 
+                  		"<i>The Filmtown upcoming movies site is unavailable at " 
+                  		+ sUrl 
+                  		+ ". If the problem persists, please contact the author of this module. </i>";
+                      return;
+                   }
+                   
+                   var idx1 = -1; // Start value for finding index
+                   // Find the top of the section containing the list of upcoming movies
+                   var idx1 = response.search("contentsubheadertd"); 
+                   var idx2 = -1; // Start value for finding index
+                   // Find the end of the section containing the list of upcoming movies
+                   var idx2 = response.search("maincentertd2");
+                   
+                   // If either one failed, abort
+                   if (idx1 == -1 || idx2 == -1){
+                   	_gel("content__MODULE_ID__").innerHTML = 
+                  		"<i>There was a problem parsing the Filmtown upcoming movies site at " 
+                  		+ sUrl 
+                  		+ ". If the problem persists, please contact the author of this module. </i>";
+                      return;
+                   }
+                   
+                   // Strip unnecessary html from the response
+			       var s = response.substring(idx1, idx2);
+
+				var idx3 = -1;
+				idx3 = s.search("movielistcovertd"); // Find the first film
+				
+				// Unique if of a film
+				var film_id = 1; 
+				
+                 // Loop through all films in the filmtown html
+                 while (idx3 != -1) { 
+                 	s = s.substring(idx3, s.length); //Extract to the end
+                 	
+                 	var idx4 = -1;
+                 	idx4 = s.search("</tr>"); //Find the end of the first film
+                 	
+                 	var film = s.substring(0,idx4); //Extract the film portion
+                 	s = s.substring(idx4, s.length); //Remove the found film from the beginning of the text
+                   	idx3 = s.search("movielistcovertd"); // Find the next film for this loop
+                   	
+                   	// Output dummy content to be filled later
+                   	var html = "";
+					html += "<div id='div_of_film_" + film_id + "' class='film'>";
+					if (bShowRating__MODULE_ID__ || bShowPoster__MODULE_ID__ || bShowFilmTitle__MODULE_ID__ ){
+						html += "<p  id='topp_of_film_" + film_id + "' class='top'>";
+					} 
+                   	if (bShowRating__MODULE_ID__ ) {
+                   		html += "<span id='rating_of_film_" + film_id + "' style='font-size:" + iRatingFontSize__MODULE_ID__ + "em;'>";
+                   		html += "</span><br/>"; 
+                   	}
+					if (bShowRating__MODULE_ID__ || bShowPoster__MODULE_ID__ || bShowFilmTitle__MODULE_ID__ ){
+						html += "</p>"; // class='top'
+					} 
+                   	html += "</div>"; //class='film'
+                   	var prev_content = _gel("content__MODULE_ID__").innerHTML;
+	                	// Fill module with dummy content
+	                	_gel("content__MODULE_ID__").innerHTML = prev_content + html; 
+                   	                   	
+                   	// Re-Initialize the array 
+                   	arrFilm__MODULE_ID__ = new Array();
+                   	//Assign an unique id for this film
+                   	arrFilm__MODULE_ID__["film_id"]=film_id;
+                   	film_id++;
+
+					// Fields needed in extractingRottenRating. These need to be extracted
+					// before calling extractRottenTomatoes... because it's asynchronous & doesn't know about 
+					// the state of others
+					if(bShowRating__MODULE_ID__ || bShowOriginalFilmTitle__MODULE_ID__){
+						arrFilm__MODULE_ID__["title_original"]=extractOriginalTitleOfFilm__MODULE_ID__(film);
+					}
+					if(bShowRating__MODULE_ID__ || bShowFilmTitle__MODULE_ID__){
+						arrFilm__MODULE_ID__["title"]=extractTitleOfFilm__MODULE_ID__(film);
+					}
+                   	if(bShowRating__MODULE_ID__){
+                   		arrFilm__MODULE_ID__["director"] = extractDirectorOfFilm__MODULE_ID__(film);
+                   		arrFilm__MODULE_ID__["actors"] = extractActorsOfFilm__MODULE_ID__(film); //Returns an array
+                   		// All fields gathered into arrFilm at this point are used by RottenTomatoes extraction function.
+	                   	extractRottentTomatoesRating__MODULE_ID__(arrFilm__MODULE_ID__);
+                   	}
+					if(bShowPoster__MODULE_ID__){
+						arrFilm__MODULE_ID__["poster"]=extractPosterOfFilm__MODULE_ID__(film);
+					}
+					if(bShowReleaseWeek__MODULE_ID__){
+						arrFilm__MODULE_ID__["vko"]=extractVkoOfFilm__MODULE_ID__(film);
+					}
+					if(bShowReleaseDate__MODULE_ID__){
+						arrFilm__MODULE_ID__["pvm"]=extractPvmOfFilm__MODULE_ID__(film);
+					}
+					arrFilm__MODULE_ID__["url"]=extractUrlOfFilm__MODULE_ID__(film);					
+					
+					// Add the found film to films array					
+					arrFilms__MODULE_ID__.push(arrFilm__MODULE_ID__);
+							
+				} // while (idx3 != -1) {
+
+				// After all data from the html file is processed 
+				// and stored in the global array arrFilms__MODULE_ID__
+				// then display
+	             processPhase2__MODULE_ID__();
+			}
+             
+             function processPhase2__MODULE_ID__(){	
+				// Output all gathered data of reviews:
+				var html = "";
+				for(var y=0; y<arrFilms__MODULE_ID__.length; y++){
+					html="";
+					var arrFilm = arrFilms__MODULE_ID__[y];
+					var id = arrFilm["film_id"];
+					
+					// Locate the <p> element with id=topp_of_film+id
+					// The contents of this film are outputted into this element.
+					// We need to keep track of this because the asynchronous RottenTomatoes function
+					// outputs it's rating into this also
+					var topp_of_film = "topp_of_film_" + id;
+					var topp_of_film_content = "";
+					topp_of_film_content = _gel(topp_of_film).innerHTML;
+					
+					if (bShowPoster__MODULE_ID__ ) {
+						// Anchor with image
+	                   	html += "<a class='poster' target='_parent' href='" + sFilmtownBaseUrl + arrFilm["url"] + "'>";
+						html += "<img src='" + sFilmtownBaseUrl + "img/covers/" + arrFilm["poster"] + "' />";
+						html += "</a>";
+					}
+					
+					if(bShowOriginalFilmTitle__MODULE_ID__ && bShowFilmTitle__MODULE_ID__){
+	                   	html += "<a class='title' href='" + sFilmtownBaseUrl + arrFilm["url"] + "' style='font-size:" + iTitleFontSize__MODULE_ID__ + "em;'>";
+	                   	html += arrFilm["title_original"];
+	                   	html += "<br/>(" +  arrFilm["title"] + ")"; 
+	                   	html += "</a>";
+	                   	html += "<br/>";
+						
+					}
+					else if (bShowFilmTitle__MODULE_ID__ ) {
+						// Anchor with text
+	                   	html += "<a class='title' href='" + sFilmtownBaseUrl + arrFilm["url"] + "' style='font-size:" + iTitleFontSize__MODULE_ID__ + "em;'>";
+	                   	html += arrFilm["title"];
+	                   	html += "</a>";
+	                   	html += "<br/>";
+					}
+					else if(bShowOriginalFilmTitle__MODULE_ID__){
+						// Anchor with text
+	                   	html += "<a class='title' href='" + sFilmtownBaseUrl + arrFilm["url"] + "' style='font-size:" + iTitleFontSize__MODULE_ID__ + "em;'>";
+	                   	html += arrFilm["title_original"];
+	                   	html += "</a>";
+	                   	html += "<br/>";
+					}
+					
+                   	if (bShowReleaseWeek__MODULE_ID__ && bShowReleaseDate__MODULE_ID__) {
+                   		// Show both the release week & date
+                   		html += "<span style='font-size:" + iReleaseWeekFontSize__MODULE_ID__ + "em;'>";
+                   		html += arrFilm["vko"];
+                   		html += "</span>";
+                   		html += "<span style='font-size:" + iReleaseDateFontSize__MODULE_ID__ + "em;'>";
+                   		html += " (~" + arrFilm["pvm"] + ") ";
+                   		html += "</span>";
+                   		html += "<br/>";
+                   	}
+                   	else if (bShowReleaseWeek__MODULE_ID__ ) {
+                   		// Just show release week
+                   		html += "<span style='font-size:" + iReleaseWeekFontSize__MODULE_ID__ + "em;'>";
+                   		html += arrFilm["vko"];
+                   		html += "</span>";
+                   		html += "<br/>";
+                   	}
+                   	else if (bShowReleaseDate__MODULE_ID__ ) {
+                   		// Just show release date
+                   		html += "<span style='font-size:" + iReleaseDateFontSize__MODULE_ID__ + "em;'>";
+                   		html += " (~" + arrFilm["pvm"] + ") ";
+                   		html += "</span>";
+                   		html += "<br/>";
+                   	}
+                   	
+                   	_gel(topp_of_film).innerHTML = html + topp_of_film_content;
+				}
+				
+				html = "";
+				html += "<div class='info'><p>";
+				html += "L&#228;hde: <a href='" + sUrl + "' target='_parent'>Filmtown: Tulossa</a><br/>";
+				html += "Filmien tuoreudet haettu: <a href='http://www.rottentomatoes.com' target='_parent'>RottenTomatoes.com:sta</a><br/>";
+				html += "Modulin käyttöohjeet yms.: <a href='http://www.koant.com/googlegadgets/filmtown/filmtown.html' target='_parent'>Koant.com Googlegadgets</a><br/>";
+				html += "</p></div>";
+                 
+				var content_of_content_module = "";
+				content_of_content_module = _gel("content__MODULE_ID__").innerHTML;
+                 
+                	// Display additional HTML string
+                	_gel("content__MODULE_ID__").innerHTML = content_of_content_module + html; 
+             }
+             
+			function extractPosterOfFilm__MODULE_ID__(sAll){
+				//<img src='img/covers/Haven.jpg' border='0' width='100' height='142'><br></a>
+				var re = new RegExp("(<img src='img/covers/)(.*)(' border=)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Problem extracting img.", sAll);}
+			        	return "null";
+			   	} else {
+			   		// We found what we were lookin for, return it.
+			   		if(DEBUG){debug("PosterOfFilm", m[2]);}
+			       	return m[2];
+			    }				
+			}
+			function extractTitleOfFilm__MODULE_ID__(sAll){
+				//<h3 class='oddmovielistinfoh3'>Haven</h3>
+				var re = new RegExp("(<h3 class='.{0,3}movielistinfoh3'>)(.*)(</h3>)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Problem extracting title.", sAll);}
+			        	return "null";
+			   	} else {
+			   		// We found what we were lookin for, return it.
+			   		if(DEBUG){debug("TitleOfFilm", m[2]);}
+			       	return m[2];
+			    }				
+			}
+			function extractVkoOfFilm__MODULE_ID__(sAll){
+				//<h4 class='oddmovielistinfoh4'>Julkaisuajankohta: vko 03 <font size='8'>(~17.01.2007)</font></h4>
+				var re = new RegExp("(<h4 class='.{0,3}movielistinfoh4'>Julkaisuajankohta:)(.*)(<font)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Problem extracting vko.", sAll);}
+			        	return "null";
+			   	} else {
+			   		// We found what we were lookin for, return it.
+			   		if(DEBUG){debug("VkoOfFilm", m[2]);}
+			       	return m[2];
+			    }				
+			}
+			function extractPvmOfFilm__MODULE_ID__(sAll){
+				//<h4 class='oddmovielistinfoh4'>Julkaisuajankohta: vko 03 <font size='8'>(~17.01.2007)</font></h4>
+				var re = new RegExp("(<font size='8'>..)([0-9\.]*)(.</font>)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Problem extracting pvm.", sAll);}
+			        	return "null";
+			   	} else {
+			   		// We found what we were lookin for, return it.
+			   		if(DEBUG){debug("PvmOfFilm", m[2]);}
+			       	return m[2];
+			    }				
+			}
+			function extractOriginalTitleOfFilm__MODULE_ID__(sAll){
+				//Alkuperäinen nimi: Haven
+				var re = new RegExp("(Alkuper.inen nimi..)(.*)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Problem extracting title.", sAll);}
+			        	return "null";
+			   	} else {
+			   		if(DEBUG){debug("OriginalTitleOfFilm", m[0]);}
+			   		// We found what we were lookin for, return it.
+			       	return m[2];
+			    }				
+			}
+			function extractUrlOfFilm__MODULE_ID__(sAll){
+				//<a href='index.php?page=displaymovie.productid=33440' class='nimi'>
+				var re = new RegExp("(<a href=')(.*)(' class=)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Problem extracting url.", sAll);}
+			        	return "null";
+			   	} else {
+			   		// We found what we were lookin for, return it.
+			   		if(DEBUG){debug("UrlOfFilm", m[2]);}
+			       	return m[2];
+			    }				
+			}
+			function extractDirectorOfFilm__MODULE_ID__(sAll){
+				//<br>Ohjaaja: Frank Marshall
+				var re = new RegExp("(<br>Ohjaaja. )(.*)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Problem extracting director.", sAll);}
+			        	return "null";
+			   	} else {
+			   		// We found what we were lookin for, return it.
+			   		if(DEBUG){debug("DirectorOfFilm", m[2]);}
+			       	return m[2];
+			    }				
+			}
+			function extractActorsOfFilm__MODULE_ID__(sAll){
+				//<br>Näyttelijät: Uma Thurman, Luke Wilson, Anna Faris, Rainn Wilson
+				var sActors = "";
+
+				var re = new RegExp("(<br>N.yttelij.t. )(.*)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Problem extracting director.", sAll);}
+			        	return "null";
+			   	} else {
+			   		// We found what we were lookin for, return it.
+			   		if(DEBUG){debug("ActorsOfFilm", m[2]);}
+			       	sActors = m[2];
+			    }			
+			    var arrActors = new Array();
+			    arrActors = sActors.split(",");
+			    arrActors = replaceInArrayElements(arrActors, ",", "");
+			    arrActors = trimInArrayElements(arrActors);
+			    return arrActors;
+			}
+			
+
+			// "PHASE" ROTTEN TOMATOES
+			
+			// This is an asynchronous function that returns immediately.
+			// Gathered data is outputted in correct places by keeping track of arrFilmCompare["film_id"]
+			function extractRottentTomatoesRating__MODULE_ID__(arrFilmCompare){
+				var sTitle = arrFilmCompare["title_original"];
+				var sTitle2 = arrFilmCompare["title"];
+				if (sTitle == null || sTitle == ""){
+					sTitle = sTitle2;
+					if (sTitle2 == null || sTitle2 == ""){
+						if(DEBUG){debug("No original title to base the Rotten Tomatoes query on", "");}
+						return null;
+					}
+				}
+				sTitle = urlEncode(sTitle);
+				sTitle2 = urlEncode(sTitle2);
+
+				var sRottenTomatoesUrl = "http://www.rottentomatoes.com/search/movie.php?searchby=movies&search=";
+				sRottenTomatoesUrl += sTitle; // Thjis is used at the end of this function
+			    	_IG_FetchContent(sRottenTomatoesUrl, function (response){
+			    		if(response==""){
+			    			if(DEBUG){debug("Response of RottenTomatoes was empty", "");}
+			    			return null;
+			    		}
+             		
+             		// First find the beginning portion of the actual search results
+             		var idx_card_top = -1;
+             		idx_card_top = response.search("THE NEW CARD TOP CAP");
+             		if(idx_card_top != -1){             		
+	             		response = response.substring(idx_card_top, response.length); // Strip the beginning
+             		}else{
+             			if(DEBUG){debug("Rotten Error 1", "Problem extracting NEW CARD TOP index.");}
+             			return null;
+             		}
+             		
+             		// Strip the end 
+             		var idx_right_sidebar_ads = -1;
+             		idx_right_sidebar_ads = response.search("Right Sidebar Ads");
+             		if(idx_right_sidebar_ads != -1){
+	             		response = response.substring(0, idx_right_sidebar_ads); //Strip the end of the html
+             		} // No need to worry about actually getting this done    
+             		
+             		
+             		// Check if there are secondary results? 
+             		var idx_the_listing_portion = -1;
+             		idx_the_listing_portion = response.search("THE LISTING PORTION");
+         			if(DEBUG){debug("Rotten is there a listing portion (secondary results?)", idx_the_listing_portion);}
+
+					var sMainResults = "";
+					var sSecondaryResults = "";
+					var bSecondaryResults = 0;
+					if(idx_the_listing_portion>0){
+						var arrTmp = new Array();
+						
+	             		// Split response into main & secondary results 
+	             		var arrTmp = response.split("THE LISTING PORTION");
+	             		sMainResults = arrTmp[0];
+						sSecondaryResults = arrTmp[1];
+						bSecondaryResults = 1; // Mark that we found secondary results
+					}
+					else{
+						sMainResults = response;
+					}
+					
+             		// Create an array of all the main results
+             		var arrMainResults = sMainResults.split("THE NEW CARD TOP CAP")
+             		// The first element of this array is unecessaru, so when traversing this array, skip it
+					             		
+             		// This is the array containing arrays
+             		var arrRottenResults = new Array();
+             		
+             		if(DEBUG){debug("No of main rotten results: ", arrMainResults.length-1);}
+             		
+             		var iRottenRating = "?";
+             		var bMatchThresholdPassed = 0;
+             		
+             		// First go through the main results:
+             		for(var y=1; y<arrMainResults.length && bMatchThresholdPassed==0; y++){
+             			
+             			// Store the result string into sResult
+             			var sResult = arrMainResults[y];
+	             		// This is the arrray trhat will contain details of a found result
+    		         		var arrRottenResult = new Array();             		
+    		         		
+    		         		arrRottenResult["actors"]=extractRottentActors__MODULE_ID__(sResult);
+    		         		arrRottenResult["director"]=extractRottentDirector__MODULE_ID__(sResult);
+    		         		arrRottenResult["title"]=extractRottentTitle__MODULE_ID__(sResult);
+    		         		arrRottenResult["rating"]=extractRottentRating__MODULE_ID__(sResult);
+    		         		arrRottenResult["score"]=calculateMatchScore__MODULE_ID__(arrRottenResult, arrFilmCompare);
+    		         		
+    		         		// If the score is > than the low limit defined in preferences, then stop processing & return
+    		         		if(arrRottenResult["score"] >= iRottenRatingMatchLimit__MODULE_ID__){
+							if(DEBUG){debug("Threshold passed!", arrRottenResult["score"]);}    		         			
+    		         			iRottenRating = arrRottenResult["rating"];
+    		         			bMatchThresholdPassed=1;
+    		         			break; //Stop processing
+    		         		}
+    		         		arrRottenResults.push(arrRottenResult); // Store the found rotten match in this array to be compared later agains the others
+             		}
+             		
+             		if(!bMatchThresholdPassed && bSecondaryResults){
+	             		// Create an array of all the main results
+	             		var arrSecondaryResults = sSecondaryResults.split("<tr>")
+						             		
+	             		// First go through the main results:
+	             		for(var y=1; y<arrSecondaryResults.length && bMatchThresholdPassed==0; y++){
+	             			
+	             			// Store the result string into sResult
+	             			var sResult = arrSecondaryResults[y];
+	             			
+		             		// This is the arrray trhat will contain details of a found result
+	    		         		var arrRottenResult = new Array();             		
+	    		         		
+	    		         		arrRottenResult["actors"]=extractSecondaryRottentActors__MODULE_ID__(sResult);
+	    		         		arrRottenResult["director"]=extractSecondaryRottentDirector__MODULE_ID__(sResult);
+	    		         		arrRottenResult["title"]=extractRottentTitle__MODULE_ID__(sResult);
+	    		         		arrRottenResult["rating"]=extractRottentRating__MODULE_ID__(sResult);
+	    		         		arrRottenResult["score"]=calculateMatchScore__MODULE_ID__(arrRottenResult, arrFilmCompare);
+	    		         		
+	    		         		// If the score is > than the low limit defined in preferences, then stop processing & return
+	    		         		if(arrRottenResult["score"] >= iRottenRatingMatchLimit__MODULE_ID__){
+								if(DEBUG){debug("Threshold passed!", arrRottenResult["score"]);}    		         			
+	    		         			iRottenRating = arrRottenResult["rating"];
+	    		         			bMatchThresholdPassed=1;
+	    		         			break; //Stop processing
+	    		         		}
+	    		         		arrRottenResults.push(arrRottenResult); // Store the found rotten match in this array to be compared later agains the others
+	             		}
+             		}
+
+					// If threshold still hasn't been passed, then compare all results & select the highest rated one             		
+             		if(!bMatchThresholdPassed){
+             			//Do the comparisons
+             			iRottenRating = 0;
+             			var iAllMatches = arrRottenResults.length;
+             			if(DEBUG){
+             				debug(arrFilmCompare["title"] + " by " + arrFilmCompare["director"], "Starring " + arrFilmCompare["actors"]);
+             				debug("iAllMatches", iAllMatches);}
+						var iHighestMatch = 0;
+             			for(var q=0; q<iAllMatches;q++){
+             				var arrMatch = arrRottenResults[q];	
+             				if( arrMatch["score"] >= iHighestMatch){
+             					iHighestMatch = arrMatch["score"];
+             					if( arrMatch["rating"] > iRottenRating ){
+             						iRottenRating = arrMatch["rating"];
+             					}
+             				}
+             			}
+             			
+             			if(iHighestMatch < iRottenRatingMatchLimit__MODULE_ID__){
+             				iRottenRating="?";
+             			}
+			    		}
+             		
+					var element_id = "rating_of_film_" + arrFilmCompare["film_id"];
+					if(DEBUG){debug("_gel(element_id)", element_id);}
+					_gel(element_id).innerHTML = "<a target='_blank' href='" + sRottenTomatoesUrl + "'>" + iRottenRating + "</a>";
+             	});    				
+			}
+						
+			function extractRottentActors__MODULE_ID__(sAll){
+				var sActors = "";
+				// Main1:
+         		// <tr><td colspan=6 bgcolor=#C3D189 align=center><img src="http://images.rottentomatoes.com/images/clear_dot.gif" height=3><br><b><a class=body-link href=/p/jet_li/>Jet Li</a>&nbsp; <a class=body-link href=/p/rosamund_kwan/>Rosamund Kwan</a></b>&nbsp; &nbsp; &nbsp; Directed by <b><a class=body-link href=/p/tsui_hark/>Tsui Hark</a></b>
+         		// Main2:
+         		// href=/p/leonard_cohen/>Leonard Cohen</a>&nbsp; &nbsp; &nbsp; Directed by <b><a class=body-link href=/p/lian_lunson/>Lian Lunson</a></b>
+         		// Secondary:
+         		// <span class=bold>Starring:</span> <a class=body-link href=/p/antonio_banderas/>Antonio Banderas</a>, <a class=body-link href=/p/johnny_depp/>Johnny Depp</a>, <a class=body-link href=/m/once_upon_a_time_in_mexico/cast_crew.php>et al.</a>&nbsp;&nbsp;&nbsp;<span class=bold>Format:</span>
+				var re = new RegExp("(href=/p/.*</a>)(</b>)(.nbsp; .nbsp; .nbsp; Directed by)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Rotten Extraction Problem 1", "Problem extracting rotten actors.");}
+			        	return "?";
+			   	} else {
+			   		// We found what we were lookin for
+			       	sActors =  m[1];
+			   		if(DEBUG){debug("Rotten Actors rawString: ", sActors);}
+			    }
+			    
+			    // <a class=body-link href=/p/jet_li/>Jet Li</a>&nbsp; <a class=body-link href=/p/rosamund_kwan/>Rosamund Kwan</a>
+			    
+			    var arrActors = new Array();
+			    arrActors = sActors.match(/[a-z ]*<\/a>/gi);
+			    arrActors = replaceInArrayElements(arrActors, "</a>", "");
+			    arrActors = trimInArrayElements(arrActors);
+			    
+			    if(DEBUG){debug("Rotten Actors:", "(" + arrActors.length + "); " + arrActors.toString());}
+			    return arrActors;
+			}
+			
+			function extractSecondaryRottentActors__MODULE_ID__(sAll){
+				var sActors = "";
+         		// Secondary:
+         		// <span class=bold>Starring:</span> <a class=body-link href=/p/antonio_banderas/>Antonio Banderas</a>, <a class=body-link href=/p/johnny_depp/>Johnny Depp</a>, <a class=body-link href=/m/once_upon_a_time_in_mexico/cast_crew.php>et al.</a>&nbsp;&nbsp;&nbsp;<span class=bold>Format:</span>
+				var re = new RegExp("(Starring:</span> <a class=body-link )(href=/p/.*</a>)(<a class=body-link href=/m/.*/cast_crew.php)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Rotten Secondary Extraction Problem 1", "Problem extracting rotten secondary actors.");}
+			        	return "?";
+			   	} else {
+			   		// We found what we were lookin for
+			       	sActors =  m[2];
+			   		if(DEBUG){debug("Rotten Secondary Actors rawString: ", sActors);}
+			    }
+			    
+			    // <a class=body-link href=/p/jet_li/>Jet Li</a>&nbsp; <a class=body-link href=/p/rosamund_kwan/>Rosamund Kwan</a>
+			    
+			    var arrActors = new Array();
+			    arrActors = sActors.match(/[a-z ]*<\/a>/gi);
+			    arrActors = replaceInArrayElements(arrActors, "</a>", "");
+			    arrActors = trimInArrayElements(arrActors);
+			    
+			    if(DEBUG){debug("Rotten Secondary Actors:", "(" + arrActors.length + "); " + arrActors.toString());}
+			    return arrActors;
+			}
+
+			function extractRottentDirector__MODULE_ID__(sAll){
+				// &nbsp; &nbsp; &nbsp; Directed by <b><a class=body-link href=/p/tsui_hark/>Tsui Hark</a></b>
+				var re = new RegExp("(Directed by <b><a class=body-link href=/p/)(.*)(/>)(.*)(</a>)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Rotten Extraction Problem 2", "Problem extracting rotten director.");}
+			        	return "?";
+			   	} else {
+			   		// We found what we were lookin for, return it.
+			   		if(DEBUG){debug("Rotten Director: ", m[4]);}
+			       	return m[4];
+			    }				
+			}
+
+			function extractSecondaryRottentDirector__MODULE_ID__(sAll){
+				// Directed by:</span> <a class=body-link href=/p/robert_rodriguez/>Robert Rodriguez</a>
+				var re = new RegExp("(Directed by:</span> <a class=body-link href=/p/)(.*)(/>)(.*)(</a>)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Rotten Extraction Problem 2", "Problem extracting secondary rotten director.");}
+			        	return "?";
+			   	} else {
+			   		// We found what we were lookin for, return it.
+			   		if(DEBUG){debug("Rotten Director: ", m[4]);}
+			       	return m[4];
+			    }				
+			}
+			
+			function extractRottentRating__MODULE_ID__(sAll){
+				var idxr1 = -1;
+				// First try to locate N/A rating. If this is found, then return
+				idxr1 = sAll.search("<span class=bold>N/A</span>"); 
+				if(idxr1 != -1){
+					if(DEBUG){debug("Rotten Rating:", "N/A");}
+					return "N/A";
+				}
+				
+				// If the rating isn't N/A, then locate it with these alternate regexps:
+				//FRESH: 100%
+				//ROTTEN: 0%
+				var re = new RegExp("(FRESH|ROTTEN)(: )([0-9]{0,3}%)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Rotten Extraction Problem 3", "Problem extracting rotten rating.");}
+			        	return "?";
+			   	} else {
+			   		// We found what we were lookin for, return it.
+			   		if(DEBUG){debug("Rotten Rating: ", m[3]);}
+			       	return m[3];
+			    }				
+			}
+			
+			function extractRottentUrl__MODULE_ID__(sAll){
+				// <a class=table-hl-header-link href=/m/once_upon_a_time_in_china/>Once Upon a Time in China</a>
+				var re = new RegExp("(<a class=table-hl-header-link href=/m/)(.*)(/>)(.*)(</a>)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Rotten Extraction Problem 4", "Problem extracting rotten url.");}
+			        	return "?";
+			   	} else {
+			   		// We found what we were lookin for, return it.
+				   	if(DEBUG){debug("Rotten Url: ", m[2]);}	
+			       	return m[2];
+			    }				
+			}
+			
+			function extractRottentTitle__MODULE_ID__(sAll){
+				// Main
+				// <a class=table-hl-header-link href=/m/once_upon_a_time_in_china/>Once Upon a Time in China</a>
+				// Main 2:
+				// <td rowspan=2 width=99% bgcolor=#A2B964><a class=table-hl-header-link href=/m/10005848-leonard_cohen_im_your_man/>Leonard Cohen: I'm Your Man</
+				// Secondary
+				// <a class=movie-link href=/m/once_upon_a_time_in_mexico/>Once Upon a Time in Mexico</a>
+				var re = new RegExp("(<a class=)(.*)( href=/m/)(.*)(/>)(.*)(</)");
+			   	var m = re.exec(sAll);
+			   	if (m == null) {
+			   		// Didn't find what we we're looking for.
+			        	if(DEBUG){debug("Rotten Extraction Problem 5", "Problem extracting rotten title.");}
+			        	return "?";
+			   	} else {
+			   		// We found what we were lookin for, return it.
+			   		if(DEBUG){debug("Rotten Title: ", m[6]);}
+			       	return m[6];
+			    }				
+			}
+			
+			/*
+			 * MATCH SCORE FUNCTION
+			 */
+			
+			function calculateMatchScore__MODULE_ID__(arrR, arrF){
+				var iTitlePercentage = 40;
+				var iDirectorPercentage = 30;
+				var iActorsPercentage = 30; //Total percentage of all actors. Divide by the number of actors to get per actor percentage
+				var iMatchScore = 0; //~0-100(%)
+				
+				// TITLE
+				
+				// Normally title_original is what is found in RottenTomatoes.com
+				var sFTitle = arrF["title_original"];
+				// But in case of HK movies for example, "finnish" title is more like it
+				var sFTitle2 = arrF["title"];
+				var sRTitle = arrR["title"];
+				
+				// Convert both to lowercase
+				sFTitle = sFTitle.toLowerCase();
+				sFTitle2 = sFTitle2.toLowerCase();
+				sRTitle = sRTitle.toLowerCase();
+				
+				// Remove leading "The " and trailing ", The" if present
+				sFTitle = sFTitle.replace("the ", "");
+				sFTitle2 = sFTitle2.replace("the ", "");
+				sRTitle = sRTitle.replace("the ", "");
+				sFTitle = sFTitle.replace(", the", "");
+				sFTitle2 = sFTitle2.replace(", the", "");
+				sRTitle = sRTitle.replace(", the", "");				
+				if(DEBUG){debug("Calculate Match Score Title /wo the", sFTitle + " or " + sFTitle2 + " vs. " + sRTitle);}
+				
+				// Calculate the title similarity by comparing the smaller sized string to the bigger one
+				var iFTitle = sFTitle.length;
+				var iFTitle2 = sFTitle2.length;
+				var iRTitle = sRTitle.length;
+				
+				var bTitleMatch = 0;
+				var re =  new RegExp();
+				var m = null;
+				if (iFTitle < iRTitle  && sFTitle != "?" && sFTitle != "" && sFTitle != null){
+					re =  new RegExp(sFTitle);
+				   	m =  re.exec(sRTitle);
+				}else if(sRTitle != "?" && sRTitle != "" && sRTitle != null){
+					re = new RegExp(sRTitle);
+					m = re.exec(sFTitle);
+				}
+
+				var m2 = null;
+				if (iFTitle2 < iRTitle  && sFTitle2 != "?" && sFTitle2 != "" && sFTitle2 != null){
+					re =  new RegExp(sFTitle2);
+				   	m2 =  re.exec(sRTitle);
+				}else if(sRTitle != "?" && sRTitle != "" && sRTitle != null){
+					re = new RegExp(sRTitle);
+					m2 = re.exec(sFTitle2);
+				}
+
+			   	if (m == null && m2 == null) {
+					if(DEBUG){debug("Calculate Match Score Titles are different", "");}
+			   	} else {
+					bTitleMatch = 1;
+					if(DEBUG){debug("Calculate Match Score Titles are similar", "");}
+			   	}
+				
+				// ACTORS
+
+				var arrFActors = new Array();
+				var arrRActors = new Array();
+				arrFActors = arrF["actors"];
+				arrRActors = arrR["actors"];
+				if(DEBUG){debug("Calculate Match Score Actors", arrF["actors"] + " vs. " + arrR["actors"]);}
+
+				// Calculate actors similarity by comparing the smaller arrays elements to the larger arrays elements
+				var iFActors = arrFActors.length;
+				var iRActors = arrRActors.length;
+				if(DEBUG){debug("Calculate Match Score Actor counts", iFActors + " vs. " + iRActors);}
+				
+				var iActorsMatch = 0; // Number of actors that match
+				var iActorCount = 0; // Number of actors that should match
+				if (iFActors < iRActors){
+					iActorCount = iFActors;
+					for(var z=0; z<arrFActors.length; z++){
+						var sActor = arrFActors[z];
+						if(sActor == "?" || sActor == "" || sActor == null){continue;} //Skip this, because this can't be used as a regular expressin
+						if(DEBUG){debug("RegExp", sActor);}
+						re =  new RegExp(sActor);
+						var sCompareActors = arrRActors.toString();
+					   	m =  re.exec(sCompareActors);
+					   	if (m == null) {
+							if(DEBUG){debug("Calculate Match Score Actors are different", sActor + " vs. " + sCompareActors);}
+					   	} else {
+							iActorsMatch += 1;
+							if(DEBUG){debug("Calculate Match Score Actors are similar", "iActorsMatch=" + iActorsMatch + " / iActorCount=" + iActorCount);}
+					   	}
+					}
+				}else{
+					iActorCount = iRActors;
+					for(var z=0; z<arrRActors.length; z++){
+						var sActor = arrRActors[z];
+						if(sActor == "?" || sActor == "" || sActor == null){continue;} //Skip this, because this can't be used as a regular expressin
+						if(DEBUG){debug("RegExp", sActor);}
+						re =  new RegExp(sActor);
+						var sCompareActors = arrFActors.toString();
+					   	m =  re.exec(sCompareActors);
+					   	if (m == null) {
+							if(DEBUG){debug("Calculate Match Score Actors are different", sActor + " vs. " + sCompareActors);}
+					   	} else {
+							iActorsMatch += 1;
+							if(DEBUG){debug("Calculate Match Score Actors are similar", "iActorsMatch=" + iActorsMatch + " / iActorCount=" + iActorCount);}
+					   	}
+					}
+				}
+				
+				// DIRECTOR
+				 
+				var sFDirector = arrF["director"];
+				var sRDirector = arrR["director"];
+				if(DEBUG){debug("Calculate Match Score Director", sFDirector + " vs. " + sRDirector);}
+				
+				sFDirector = sFDirector.toLowerCase();
+				sRDirector = sRDirector.toLowerCase();
+				
+				// Calculate the director similarity by comparing the smaller sized string to the bigger one
+				var iFDirector = sFDirector.length;
+				var iRDirector = sRDirector.length;				
+				
+				var bDirectorMatch = 0;
+				if (iFDirector < iRDirector && sFDirector != "?" && sFDirector != "" && sFDirector != null){
+					re =  new RegExp(sFDirector);
+				   	m =  re.exec(sRDirector);
+				}else if(sRDirector != "?" && sRDirector != "" && sRDirector != null){
+					re = new RegExp(sRDirector);
+					m = re.exec(sFDirector);
+				}
+				   	
+			   	if (m == null) {
+					if(DEBUG){debug("Calculate Match Score Directors are different", "");}
+			   	} else {
+					bDirectorMatch = 1;
+					if(DEBUG){debug("Calculate Match Score Directors are similar", "");}
+			   	}
+				
+				
+				// RESULTS
+
+				iMatchScore = iActorsMatch / iActorCount * iActorsPercentage + bDirectorMatch * iDirectorPercentage + bTitleMatch * iTitlePercentage;
+				if(DEBUG){debug("Calculate Match Score, TOTAL SCORE", "SCORE: " + iMatchScore + "%");}
+				 
+				return iMatchScore;
+			}
+			
+			// HELPER FUNCTIONS
+			
+			function debug(sIdentification, sContent) {
+				
+				var sDisplay = replaceCode(sContent);
+				
+				if(DEBUG_WINDOW == null){
+					DEBUG_WINDOW=window.open('',"Debug");	
+					DEBUG_CONTENT = DEBUG_WINDOW.document;	
+					DEBUG_CONTENT.open("text/html"); // text/html is the default
+					DEBUG_CONTENT.writeln("<html><head><title>Debug</title></head><body>");			
+				}
+				
+				DEBUG_CONTENT.writeln("<b>");								
+				DEBUG_CONTENT.writeln(sIdentification);
+				DEBUG_CONTENT.writeln("</b><br/>");								
+				DEBUG_CONTENT.writeln(sDisplay);
+				DEBUG_CONTENT.writeln("<hr/>");
+			}	
+			
+			function replaceInArrayElements(arrArray, sString, sReplacement){
+				// Replaces given string with replacement in all elements of the array
+			    for(var i=0; i<arrArray.length; i++){
+			    		arrArray[i]=arrArray[i].replace(sString,sReplacement);
+			    }
+			    return arrArray;
+			}
+			
+			function trimInArrayElements(arrArray){
+				// Removes leading & Trailing whitespace from array elements
+			    for(var i=0; i<arrArray.length; i++){
+			    		arrArray[i]=trim(arrArray[i]);
+			    }
+			    return arrArray;
+			}
+			
+			function trim(str) { 
+				// Trims whitespace from string
+			    str.replace(/^\s*/, '').replace(/\s*$/, ''); 
+			   return str;
+			} 
+
+			function replaceCode(sAll){
+				// Use this to display code in html page
+				if(sAll == null || sAll == ""){
+					return "";
+				}
+				sAll = sAll.toString(); // Is this needed?
+				
+				sAll = sAll.replace(/</g,"&lt;");
+				sAll = sAll.replace(/>/g,"&gt;");
+				sAll = sAll.replace(/"/g,"&quot;");
+				
+				return sAll;
+			}
+			
+			function urlEncode(str){
+				// Use this to encode a string into an url
+			    str=escape(str);
+			    str=str.replace(new RegExp('\\+','g'),'%2B');
+			    return str.replace(new RegExp('%20','g'),'+');
+			}
+			
+                	// Track the preference usage with Analytics:
+              function trackPreferenceUsageWithAnalytics(bShowRating, 
+                									bShowPoster,
+                									bShowFilmTitle,
+                									bShowOriginalFilmTitle,
+                									bShowReleaseWeek,
+                									bShowReleaseDate,
+                									iTitleFontSize,
+                									iReleaseWeekFontSize,
+                									iReleaseDateFontSize,
+                									iRatingFontSize,
+                									iRottenRatingMatchLimit
+                									){
+              	
+				// Use the following with "event_name" to track different event types within a gadget
+				// This is useful to track how much some feature is used.
+				// _IG_Analytics("UA-787283-2", "/RollingStoneGoogleGadget/event_name");
+				
+				// Let's construct the event name dynamically:
+				var event = "";
+				event = "bShowRating=" + bShowRating 
+					+ "&amp;bShowPoster=" + bShowPoster 
+					+ "&amp;bShowFilmTitle=" + bShowFilmTitle 
+					+ "&amp;bShowOriginalFilmTitle=" + bShowOriginalFilmTitle 
+					+ "&amp;bShowReleaseWeek=" + bShowReleaseWeek
+					+ "&amp;bShowReleaseDate=" + bShowReleaseDate
+					+ "&amp;iTitleFontSize=" + iTitleFontSize
+					+ "&amp;iReleaseWeekFontSize=" + iReleaseWeekFontSize
+					+ "&amp;iReleaseDateFontSize=" + iReleaseDateFontSize
+					+ "&amp;iRatingFontSize=" + iRatingFontSize
+					+ "&amp;iRottenRatingMatchLimit=" + iRottenRatingMatchLimit;
+				
+				_IG_Analytics("UA-787283-2", "/FilmtownGoogleGadget/" + event);
+              	
+              }
+			
+	        document.body.onload = filmtown__MODULE_ID__();
+        
+        </script>
+     ]]>
+  </Content> 
+  
+</Module>
